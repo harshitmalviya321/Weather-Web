@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState}from 'react'
+import LoginComponent from './components/LoginComponent';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    const adminUser ={
+        email:"harshit@ail.com",
+        password:"harshit123"
+    }
+    const [user, setuser] = useState({name:"",email:""})
+    const [error, seterror] = useState("");
+     
+    const Login = details =>{
+        console.log(details);
+    }
 
-export default App;
+    const Logout=() =>{
+        console.log("Logout");
+    }
+    return (
+        <div className="App">
+            {(user.email != "") ? (
+            <div className="welcome">
+                <h2>Welcome{user.name}</h2>
+                <button>Logout</button>
+        </div> 
+            ) : ( 
+                <LoginComponent Login={Login} error={error} />
+            )}
+            </div>
+    )}
+export default App
